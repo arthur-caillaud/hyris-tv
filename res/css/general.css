@@ -1,0 +1,181 @@
+* {
+    outline-width: 0px;
+}
+
+body, html{
+    width:100%;
+    overflow-x: hidden;
+    margin:0;
+    padding:0;
+    text-align: center;
+    font-family: "Muli",sans-serif;
+}
+
+@media screen and (max-width: 1000px) {
+  body{
+      font-size: 28px;
+  }
+}
+
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+.top-align *{
+    vertical-align: top;
+}
+
+.centered{
+    text-align: center;
+}
+
+.pageWrapper{
+    height:100%;
+    width:100%;
+    margin:0;
+    padding:0;
+    text-align: center;
+}
+.mainContentWrapper {
+    display: block;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.directPage{
+    display: block;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.subContentWrapper{
+    width: calc(100% + 30px);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left:-15px;
+    bottom: 10px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+#tagCloud{
+    margin-top: 30px;
+    width: 98%;
+    margin-left: 1%;
+    height: 650px;
+}
+
+.jqcloud-word a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.bodyTitle{
+    padding: 2%;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+    z-index:10;
+}
+
+.relativeBlock{
+    position: relative;
+}
+
+.loading-gif{
+    height: 80%;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.absoluteFill{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+header{
+    height: 60px;
+    position: relative;
+    z-index: 300;
+}
+.banner .logo img{
+  position: absolute;
+  z-index:50;
+  top:0;
+  left:0;
+  transition: -ms-transform ease 0.5s, -webkit-transform ease 0.5s, transform ease 0.5s, height ease 0.5s, left ease 0.5s, top ease 0.5s;
+}
+.wrapperBanner:hover .logo .hy_part img{
+  -ms-transform: rotate(30deg); /* IE 9 */
+  -webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+  transform: rotate(30deg);
+  height: 50px;
+  top:-8px;
+  left:-15px;
+}
+.wrapperBanner:hover .logo .ris_part img{
+  height: 12.5px;
+  top:10px;
+  left:13px;
+}
+
+.banner .logo .hy_part img{
+  height: 40px;
+  top:-5px;
+  left:-11px;
+    -ms-transform: rotate(15deg); /* IE 9 */
+    -webkit-transform: rotate(15deg); /* Chrome, Safari, Opera */
+    transform: rotate(15deg);
+}
+.banner .logo .ris_part img{
+  height: 10px;
+  top:10px;
+  left:11px;
+}
+.banner .logo{
+    display: inline-block;
+    margin:0;
+    height: 30px;
+    position: absolute;
+    top: 50%; /* poussé de la moitié de hauteur du référent */
+    left: 50%;
+    transform: translate(-50%,-50%); /* tiré de la moitié de sa propre hauteur */
+}
+.wrapperBanner{
+    height: 100%;
+    text-align: center;
+    padding: 0px 20px;
+    background: linear-gradient(#549fd0, #0072bc);
+    position: relative;
+}
+.banner{
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.bannerLink{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+footer{
+    display: block;
+    margin-top:20px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,25 @@
+.panelBar {
+    width: auto;
+    border-bottom: solid 1px rgb(240, 240, 240);
+}
+
+a.panelElement {
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+a.panelElement{
+    font-size: 15px;
+}
+
+a.currentPage{
+    border-bottom: solid 3px #569dff;
+}
+
+a.panelElement span {
+    display: block;
+}

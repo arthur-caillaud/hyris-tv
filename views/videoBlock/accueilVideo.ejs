@@ -1,0 +1,57 @@
+<div class="accueilVideoMainWrapper col-xs-12">
+
+    <div class="main col-xs-12 col-md-6">
+        <div class="wrappervideo col-md-12">
+            <div class="mainVideoContainer">
+                <div class="video">
+                    <a href="<%=video_main.link%>">
+                        <img src="<%=video_main.poster%>" alt="MainVid" class="MainVid">
+                        <div class="middle">
+                            <i class="fa fa-youtube-play fa-5x" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="descriptionVideoWrapper descriptionMainWrapper">
+                <div class="descriptionVideo descriptionMain">
+                    <a href="<%=video_main.link%>"><span class="titre"><%=video_main.titre%></span></a> <acronym title="Vidéo à la une"><i class="fa fa-fire trendy" aria-hidden="true"></i></acronym>
+                    <div class="descr">
+                        <span class="date">Ajoutée le <%= video_main.date%></span><span class="nb_vue"> · <b><%=video_main.nb_vue%></b> vues</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="moment col-xs-12 col-md-6">
+
+    <% videos_moment.forEach(function(video) { %>
+
+          <div class="wrappervideo col-md-6 col-xs-12">
+              <div class="video">
+                  <a href="<%=video.link%>">
+                  <img src="<%=video.poster%>" alt="MomentVid" class="MomentVid">
+                  <div class="middle">
+                          <i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+                  </div>
+                  </a>
+              </div>
+              <div class="descriptionVideoWrapper descriptionMomentWrapper">
+                  <div class="descriptionVideo descriptionMoment">
+                      <a href="<%=video.link%>">
+                          <span class="titre">
+                              <%=video.titre%>
+                          </span>
+                      </a>
+                      <div class="descr">
+                          <span class="date">Ajoutée le <%= video.date%></span><span class="nb_vue"> · <b><%=video.nb_vue%></b> vues</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+    <% }); %>
+
+    </div>
+</div>

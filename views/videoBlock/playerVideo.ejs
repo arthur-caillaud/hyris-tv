@@ -1,0 +1,56 @@
+<div class="wrapperVideoPlayer">
+
+    <div class="video-cinema-placeholder">
+
+        <div class="wrapperVideoApi">
+            <video style="font-size:milis" controls id="video_played" class="video-js vjs-sublime-skin" controls preload="none" autoplay="true" poster="<%= video.poster %>" data-setup="{}">
+                <% encodages.forEach(function(encode) { %>
+                <source src="<%= encode.url %>" type="<%= encode.type %>" label='<%= encode.name %>' res='<%= encode.value %>'>
+                <% }); %>
+                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            </video>
+            <img class="logo-hyris-vid" src="<%= logo_small %>">
+        </div>
+
+    </div>
+
+    <div class="videoPlayerDescription">
+
+        <div class="title">
+            <h2><b><%= video.titre %></b></h2>
+        </div>
+
+        <div class="date">
+            <b><i>Ajoutée le <%=video.date%></i></b>
+        </div>
+        <div class="separationLine">
+
+        </div>
+
+        </br>
+
+        <div class="descr">
+            <%=video.description%>
+        </div>
+
+        <div class="bottom">
+            <ul class="tags">
+                <%
+                    video.tag.forEach(function (tag) {
+                %>
+                <li>
+                    <a href="<%= '/tag/'+ tag %>"><b>#<%= tag %></b></a>
+                </li>
+                <%
+                    })
+                %>
+            </ul>
+
+            <div class="nb_vue">
+                <b><%=video.nb_vue%></b> vues
+            </div>
+        </div>
+
+    </div>
+
+</div>

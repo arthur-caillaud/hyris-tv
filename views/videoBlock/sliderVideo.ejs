@@ -1,0 +1,66 @@
+<div class="wrapper_slider">
+
+    <%
+        if (slider.link && slider.link == "#") {
+
+    %>
+
+    <div class="titreSlider"><%=slider.titre%></div>
+
+    <%
+        }
+
+        else {
+    %>
+    <div class="titreSlider"><a href="<%=slider.link%>">
+            <%
+            if (slider.link){
+                if (slider.link.slice(1,7) === "direct"){
+            %>
+            <span class="round-rectangle-direct">DIRECT ASSOCIÉ</span>
+            <%
+                }
+            %>
+
+            <%=slider.titre%></a></div>
+
+    <%
+
+        }
+    }
+    %>
+
+
+    <div class="owl-carousel owl-theme">
+
+        <% slider.videos.forEach(function(video) { %>
+
+        <div class="sliderVideo item">
+
+            <div class="video">
+                <a href="<%=video.link%>">
+                    <img src="/img/hyris_default_720.png" onload="load_img(this,'<%=video.poster%>');" class="sliderImgVideo" onmouseover="load_img(this,'<%=video.gif%>');" onmouseout="load_img(this,'<%=video.poster%>');;">
+                    <div class="middle">
+                        <i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+                    </div>
+                </a>
+            </div>
+
+            <div class="descriptionSliderWrapper">
+                <div class="descriptionSlider">
+                    <a href="<%= video.link %>">
+                        <span class="titre">
+                            <%=video.titre%>
+                        </span>
+                    </a>
+                    <div class="descr">
+                        <span class="date"><%= video.date%></span><span class="nb_vue"> · <b><%=video.nb_vue%></b> vues</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <% }); %>
+
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('generalBlock/head', {head: html.head}); %>
+
+<body>
+
+<%- include('generalBlock/header', {header: html.header}); %>
+
+
+<form action="/roleModification" method="POST">
+    <select name="Edit role" id="typeOf">
+        <option value="add">Ajouter</option>
+        <option value="delete">Supprimer</option>
+    </select>
+    <label for="idRole">ID</label>
+    <input type="text" name="idRole" id="idRole"/>
+    <label for="label">Label</label>
+    <input type="text" name="label" id="label"/>
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description">
+    <button type="submit">Submit</button>
+</form>
+
+<%- include('generalBlock/footer', {footer: html.footer}); %>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/* DIRECT */
+
+.formAddDirect{
+  text-align: center;
+}
+.formAddDirect .imageToUpload{
+  display: block;
+  padding-left: 50%;
+}
+.formAddDirect .wrapperInputFile{
+  display: inline-block;
+  margin: 10px;
+}
+
+/* VIDEO */
+
+#waitingVideosArea{
+    margin-top: 50px;
+}
+
+.modificationVideoContainer{
+    margin-top: 20px;
+    padding-top: 30px;
+    border-top: 1px solid #d9d9d9;
+}
+
+.tagit{
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.tagit-new{
+    width: 50px;
+    display: inline-block;
+}
+.tagit-autocomplete{
+    border-radius: 3px;
+}
+.tagit-autocomplete .ui-menu-item{
+    text-align: center;
+    border-radius: 3px;
+}
+.tagit-autocomplete .ui-menu-item-wrapper:hover{
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+.ui-state-activated{
+    color:red;
+}
+
+.selectEncodage{
+    margin:10px 10px 0px 0px;
+    vertical-align: middle;
+}
+
+.selectEncodage option{
+    display: inline-block;
+    font-size: 15px;
+    padding: 7.5px;
+    margin: 0;
+}
+select[multiple]{
+    height: 70px;
+}

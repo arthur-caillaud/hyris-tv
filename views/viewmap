@@ -1,0 +1,11 @@
+/views
+	video
+	/video_block
+		player_video
+		slider_video
+	/toolkit_block
+		searchbar
+	/general_block
+		footer
+		head
+		header

@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+
+<%- include('generalBlock/head', {head: html.head}); %>
+
+<body>
+
+<%- include('generalBlock/header', {header: html.header}); %>
+
+
+<div class="mainContentWrapper relativeBlock col-md-12">
+    <div class="wrapperAuth">
+
+        <div class="bodyTitle">
+            <h4>Se connecter à</h4>
+            <h2>hyris.tv</h2>
+        </div>
+
+        <div class="loginWrapper col-xs-10 col-xs-offset-1">
+            <div class="loginBox myEcpLogin col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-1">
+                <div class="myEcpLoginBox">
+                    <span class="loginBoxLabel">ViaRézo</span>
+                    <span class="loginBoxLabelInfo">Connectez-vous avec la plateforme de ViaRézo</span>
+                    <div class="loginBoxLine col-xs-10 col-xs-offset-1"></div>
+                    <form action="/auth/oauth2" method="GET">
+                        <div>
+                            <button class="myEcpButton hvr-glow" type="submit">Se connecter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="loginBox memberLogin col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-2">
+                <span class="loginBoxLabel">Login membre</span>
+                <span class="loginBoxLabelInfo">Pour les membres de Hyris</span>
+                <div class="loginBoxLine col-xs-10 col-xs-offset-1"></div>
+                <form action="/auth/login/mysql" method="POST">
+                    <div class="loginBoxInput usernameInputBox">
+                        <span class="loginInputPicture" aria-hidden="true">
+                            <i class="fa fa-user-o"></i>
+                        </span>
+                        <input class="loginBoxInputZone" type="text" name="username" placeholder="Identifiant" id="login"/>
+                    </div>
+                    <div class="loginBoxInput">
+                        <span class="loginInputPicture" aria-hidden="true">
+                            <i class="fa fa-key"></i>
+                        </span>
+                        <input class="loginBoxInputZone" type="password" name="password" placeholder="Mot de passe" id="password"/>
+                    </div>
+                    <div class="loginButton col-xs-12">
+                        <button class="hyrisLoginButton" type="submit"><i class="loginButtonPicture fa fa-sign-in" aria-hidden="true"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--<h2>LDAP : </h2>
+        <form action="/auth/login/ldap" method="POST">
+            <input type="text" name="username" placeholder="Identifiant" id="login"/>
+            <input type="password" name="password" placeholder="Mot de passe" id="password"/>
+            <button type="submit">Submit</button>
+        </form>-->
+    </div>
+</div>
+
+<%- include('generalBlock/footer', {footer: html.footer}); %>
+
+</body>
+</html>

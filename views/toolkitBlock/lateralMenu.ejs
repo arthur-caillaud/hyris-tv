@@ -1,0 +1,126 @@
+<div class="lateralMenuWrapper">
+<nav class="lateralMenu">
+    <div class="lateralMenuElement lateralMenuElementExtendable" id="administration" style="margin-top: 10px">
+            <a class="lateralMenuElementLink" href="/">
+                <span class="fa fa-home lateralMenuElementIco" aria-hidden="true"></span>
+                Accueil
+            </a>
+    </div>
+    <% if (lateralMenu.isAdmin){%>
+    <div class="lateralMenuGroup">
+        <div class="groupTitle">
+            <b>ESPACE MEMBRE</b>
+        </div>
+        <div class="lateralMenuElement lateralMenuElementExtendable" id="administration">
+            <a class="lateralMenuElementLink" href="/admin">
+                <span class="fa fa-cog lateralMenuElementIco" aria-hidden="true"></span>
+                Administration
+            </a>
+            <div class="lateralMenuScrollBox">
+                <div class="lateralMenuScrollingElement">
+                    <a href='/admin/manageDemand'>Gérer les demandes</a>
+                </div>
+                <div class="lateralMenuScrollingElement">
+                    <a href='/admin/uploadVideo'>Ajouter une vidéo</a>
+                </div>
+                <div class="lateralMenuScrollingElement">
+                    <a href='/admin/addDirect'>Ajouter un direct</a>
+                </div>
+                <div class="lateralMenuScrollingElement">
+                    <a href='/admin/manageRights'>Gérer les droits</a>
+                </div>
+                <div class="lateralMenuScrollingElement">
+                    <a href='/admin/manageMailingList'>Gérer la ML</a>
+                </div>
+            </div>
+        </div>
+        <div class="lateralMenuElement lateralMenuElementExtendable" id="administration">
+            <a class="lateralMenuElementLink" href="http://wiki.nxtelevision.com">
+                <span class="fa fa-wikipedia-w lateralMenuElementIco" aria-hidden="true"></span>
+                Kiwi
+            </a>
+        </div>
+    </div>
+    <% } %>
+
+    <div class="lateralMenuGroup">
+        <div class="groupTitle">
+            <b>CONTENU</b>
+        </div>
+        <div class="lateralMenuElement lateralMenuElementExtendable" id="direct">
+            <a class="lateralMenuElementLink" href="/direct">
+                <span class="fa fa-film lateralMenuElementIco" aria-hidden="true"></span>
+                Derniers DTs
+            </a>
+            <div class="lateralMenuScrollBox">
+
+                <% lateralMenu.lastDirects.forEach(function(direct){
+                    %>
+                <div class="lateralMenuScrollingElement">
+                    <a href='/direct/<%= direct.id%>'><%= direct.nom %></a>
+                </div>
+                <%
+                })
+                %>
+
+                <div class="lateralMenuScrollingElement">
+                    <a href='/direct'><i>... tous nos Directs</i></a>
+                </div>
+            </div>
+        </div>
+        <div class="lateralMenuElement" id="category">
+            <a class="lateralMenuElementLink" href="/tag">
+                <span class="fa fa-tags lateralMenuElementIco" aria-hidden="true"></span>
+                Catégories
+            </a>
+        </div>
+        <div class="lateralMenuElement" id="chanson">
+            <a class="lateralMenuElementLink" href="/tag/chanson">
+                <span class="fa fa-music lateralMenuElementIco" aria-hidden="true"></span>
+                Chansons
+            </a>
+        </div>
+        <div class="lateralMenuElement" id="live">
+            <a class="lateralMenuElementLink" href="#">
+                <span class="fa fa-video-camera lateralMenuElementIco" aria-hidden="true"></span>
+                HyrisLive
+            </a>
+        </div>
+    </div>
+
+    <div class="lateralMenuGroup">
+        <div class="groupTitle">
+            <b>MON ESPACE</b>
+        </div>
+        <div class="lateralMenuElement" id="history">
+            <a class="lateralMenuElementLink" href="#">
+                <span class="fa fa-history lateralMenuElementIco" aria-hidden="true"></span>
+                Historique
+            </a>
+        </div>
+        <div class="lateralMenuElement" id="favs">
+            <a class="lateralMenuElementLink" href="#">
+                <span class="fa fa-heart lateralMenuElementIco" aria-hidden="true"></span>
+                Vidéos favorites
+            </a>
+        </div>
+        <div class="lateralMenuElement lateralMenuElementExtendable" id="demand">
+            <a class="lateralMenuElementLink" href="/demand">
+                <i class="fa fa-handshake-o lateralMenuElementIco" aria-hidden="true"></i>
+                Demandes
+            </a>
+            <div class="lateralMenuScrollBox">
+                <div class="lateralMenuScrollingElement">
+                    <a href='/demand/couverture'>Couverture</a>
+                </div>
+                <div class="lateralMenuScrollingElement">
+                    <a href='/demand/barco'>Barco</a>
+                </div>
+                <div class="lateralMenuScrollingElement">
+                    <a href='/demand/materiel'>Matériel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+</div>

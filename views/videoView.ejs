@@ -1,0 +1,40 @@
+<%#
+need : {
+  html : {
+    head : {
+      title : Str,
+      favicon : Image,
+      css_required : Str[],
+      js_required : Str[]
+    }
+    header : {
+      img_banner : Image
+    }
+    footer : {
+      copyright : Str,
+      links : Link[]{
+        link : Str,
+        title : Str
+      }
+    }
+  }
+  video{
+    video_to_play : Video,
+    videos_slider : Video[]
+  }
+}
+%>
+
+<!DOCTYPE html>
+<html>
+    <%- include('generalBlock/head', {head: html.head}); %>
+<body>
+    <%- include('generalBlock/header', {header: html.header}); %>
+
+    <%- include('videoBlock/accueilVideo', {image : html.image, video: video.video_to_play}); %>
+
+    <%- include('videoBlock/sliderVideo', {image : html.image, slider: video.slider}); %>
+
+    <%- include('generalBlock/footer', {footer: html.footer}); %>
+</body>
+</html>

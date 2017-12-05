@@ -1,0 +1,214 @@
+#searchBarWrapper{
+    text-align: center;
+    background: rgb(255, 255, 255);
+    height: 60px;
+    position: relative;
+    z-index: 200;
+    width: 100%;
+    box-shadow: 0px 0px 5px grey;
+}
+
+.lateralMenuButton{
+    outline: none;
+    background-color: transparent;
+    border : none;
+    position: absolute;
+    top : 50%;
+    left : 20px;
+    transform: translate(0%,-50%); /* tiré de la moitié de sa propre hauteur */
+}
+
+.lateralMenuButton i {
+    font-size: 130%;
+    color: #878787;
+    transition: color 0.2s;
+}
+
+.lateralMenuButton:hover i{
+    color: #646464;
+}
+
+.lateralMenuButton:active i{
+    color: #646464;
+}
+
+/*
+.accueilHyris {
+    position: absolute;
+    border-radius: 5px;
+    border: 2px solid #54b9ff;
+    padding: 7px;
+    top : 50%;
+    left : 200px;
+    transform: translate(0%,-50%);
+    max-height: 50px;
+}
+
+.accueilHyris img {
+    max-width: 100px;
+    max-height: 40px;
+}
+*/
+
+#searchBar{
+    position: absolute;
+    top: 50%; /* poussé de la moitié de hauteur du référent */
+    left: 50%;
+    text-align: center;
+    width: 100%;
+    transform: translate(-25%,-50%); /* tiré de la moitié de sa propre hauteur */
+}
+
+#searchBar #search {
+    padding: 0 0 0 8px;
+    margin: 0;
+    font-size: 1.1em;
+    height: 30px;
+    width: 50%;
+    border: 1px solid #d2d2d2;
+    border-right: 1px solid transparent;
+    -webkit-border-radius:
+               6px 0px 0px 6px;
+    border-radius:
+               6px 0px 0px 6px;
+    float:left;
+    transition: border 0.2s;
+    position: relative;
+    z-index: 50;
+    left:-20px;
+    cursor: pointer;
+}
+
+#searchBar #search:hover {
+    border-color: #7f7f7f;
+    border-right: 1px solid #7f7f7f;
+}
+
+#searchBar #searchButton {
+  text-align: center;
+  float:left;
+  position: relative;
+  z-index: 50;
+  left:-20px;
+  width: 40px;
+  height: 30px;
+  border: 1px solid #d2d2d2;
+  -webkit-border-radius:
+             0 6px 6px 0;
+  border-radius:
+             0 6px 6px 0;
+    padding: 0;
+    margin: 0 0 0 0;   /* Espace autour du bouton : haut droite bas gauche  */
+  background-color: #FFF;
+  cursor: pointer;
+  -webkit-transition: background-color 0.5s, color 0.5s, border 0.5s; /* Safari */
+  transition: background-color 0.5s, color 0.5s, border 0.5s;
+}
+#searchBarWrapper:hover #searchButton{
+    background-color: #EEE;
+    color: black;
+}
+#searchBar #searchButton:hover{
+    color: white;
+    background-color: #555;
+    border-color: black;
+}
+#searchBar .loupe_button {
+	position: relative;
+    left:-2px;
+}
+
+.searchInputContainer {
+    position: relative;
+}
+
+#ajaxResultsContainer {
+    position: absolute;
+    width: 50%;
+    top:40px;
+    left:-20px;
+    z-index:0;
+    margin-top: 5px;
+    box-shadow: 0px 2px 5px #adadad;
+}
+
+.AjaxElement {
+    text-align: left;
+    background-color: #ffffff;
+    height: 30px;
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+    border-top: 1px solid #FFFFFF;
+}
+
+.AjaxElement:hover {
+    background-color: #d4d4d4;
+}
+
+.AjaxElement.hovered{
+    background-color: #d4d4d4;
+}
+
+.emptyContainer {
+    display: none;
+}
+
+.filledContainer {
+    display: block;
+}
+
+.AjaxElementDate {
+    color: #696969;
+    font-size: 10px;
+    padding-left: -5px;
+    padding-right: 4px;
+}
+
+.AjaxElementLabel {
+    float: right;
+    position: relative;
+    left: 5px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.VideoLabel {
+    color: #0072bc;
+}
+
+.DirectLabel {
+    color: #ff3c3b;
+}
+
+.logoutButton{
+    outline: none;
+    background-color: transparent;
+    border : none;
+    position: absolute;
+    top : 50%;
+    right : 20px;
+    transform: translate(0%,-50%); /* tiré de la moitié de sa propre hauteur */
+}
+
+.logoutButton i {
+    font-size: 130%;
+    color: #878787;
+    transition: color 0.2s;
+}
+
+.logoutButton:hover i{
+    color: #646464;
+}
+
+.logoutButton:active i{
+    color: #646464;
+}
+
+a.AjaxElement{
+    height: auto;
+}
+
+.tagModeSearch {
+    background-color: rgba(255, 212, 162, 0.77);
+}

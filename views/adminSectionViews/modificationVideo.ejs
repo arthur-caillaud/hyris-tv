@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<%- include('../generalBlock/head', {head: html.head}); %>
+
+    <body>
+        <%- include('../generalBlock/header', {header: html.header}); %>
+        <%- include('../adminBlock/panel', {adminPanel: html.adminPanel, currentPage : "uploadVideo"}); %>
+
+        <div class="mainContentWrapper col-xs-10 col-xs-offset-1">
+            <div class="subContentWrapper">
+
+                <div class="bodyTitle">
+                    <h2><b>Modifier la vidéo</b></h2>
+                    <h3><%= html.data.old_vid.titre %></h3>
+                </div>
+
+                <%- include('../videoBlock/playerVideo', {logo_small : html.header.logo_small_hyris, video: video.video_to_play}); %>
+
+                <div class="modificationVideoContainer col-xs-12">
+
+                    <form id="formUploadModifVideo" method="post" action="/admin/modifVideo">
+                        <div class="form-group col-xs-6 col-md-4">
+                            <label for="titreVideoUpload">Titre</label>
+                            <input type="text" name="titre" class="form-control" value="<%=html.data.old_vid.titre%>" id="titreVideoUpload" required="true" />
+                        </div>
+
+                        <div class="form-group col-xs-6 col-md-4">
+                            <label for="dateVideoUpload">Date de la vidéo</label>
+                            <input type="date" name="date" class="form-control" value="<%=html.data.old_vid.date%>" id="dateVideoUpload" />
+                        </div>
+
+                        <div class="form-group col-xs-6 col-md-4">
+                            <label for="timeMiniatureUpload">Temps miniature (s) : </label>
+                            <input type="text" size="4" class="form-control input-xs" name="time_pict" id="timeMiniatureUpload" value="<%= html.data.old_vid.time_pict %>"><br/>
+                        </div>
+
+                        <div class="form-group col-xs-6 col-md-4">
+                            <label for="encodage_associe">Encodage associé <i class="fa fa-question-circle" title="Maintenir Ctrl pour sélectionner plusieurs encodages"></i></label>
+                            <select multiple id="encodage_associe" class="form-control" name="encodage[]" class="selectEncodage">
+                              <% listEncodage.forEach(function(encodage) { %>
+                                  <option value="<%=encodage.id%>" title="<%=encodage.description%>" <%=encodage.selected%>><%=encodage.label%></option>
+                              <% }) %>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-xs-6 col-md-4">
+                            <label for="tag">Tags </label><br>
+                            <input type="text" name="tag" id="tagVideo"/>
+                            <span id="warningTag" style="display:none;">Attention ce tag n'existe pas.</span>
+                        </div>
+
+                        <div class="form-group col-xs-6 col-md-4">
+                            <label for="description">Description</label>
+                            <textarea name="description" class="form-control" rows="4" id="description" placeholder="Description"><%=html.data.old_vid.description%></textarea>
+                        </div>
+
+                        <div class="form-group col-xs-6 col-md-4 centered">
+                            <label for="publicStateVideoUpload">Video privée : </label><br/>
+                            <input type="checkbox" name="is_private" id="publicStateVideoUpload" <%=  html.data.old_vid.public_state %>/>
+                        </div>
+
+                        <input type="hidden" name="id" value="<%=html.data.old_vid.id%>" id="id" display="none" />
+
+                        <div class="form-group col-xs-6 col-md-4">
+                            <label for="directInput">Attacher la video à un autre direct <i class="fa fa-question-circle" title="Chercher un direct est récupérer l'id du direct dans l'url : http://hyris.tv/direct/(idDirect)"></i></label>
+                            <input type="text" placeholder="id du direct" name="id_direct" class="form-control" id="directInput"/>
+                        </div>
+
+                        <div class="form-group col-xs-6 col-md-4 centered">
+                            <label for="stateVideoActive">Video supprimée : </label><br/>
+                            <input type="checkbox" name="is_deleted" onclick="if(this.checked)if(!confirm('T\'es sûr de bien vouloir la supprimer hein ?'))this.checked=false" id="stateVideoActive"/>
+                        </div>
+
+                        <div class="form-group col-xs-12 centered">
+                            <input class="btn btn-primary" value="Modifier la vidéo" id="buttonVideoUpload" type="submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../generalBlock/footer', {footer: html.footer}); %>
+
+        <script>
+            var availableTags =  <%- JSON.stringify(tags) %>
+            var baseTag =  <%- JSON.stringify(html.data.old_vid.tag) %>
+            $(document).ready(function() {
+                $("#tagVideo").tagit({
+                    availableTags:availableTags,
+                    autocomplete: {delay: 0, minLength: 1},
+                    caseSensitive: false,
+                    singleField: true,
+                    singleFieldDelimiter: ",",
+                    beforeTagAdded: function(event, ui) {
+                        // do something special
+                        var tags = $("#tagVideo").tagit("assignedTags");
+                        if($.inArray(ui.tagLabel , availableTags)==-1){
+                            $('#warningTag').show(200);
+                            setTimeout(function(){
+                                $('#warningTag').hide(200);
+                            },1000);
+                            return false;
+                        }
+                    }
+                });
+                for(var i=0;i!=baseTag.length;i++){
+                    $("#tagVideo").tagit("createTag", baseTag[i]);
+                }
+            });
+        </script>
+    </body>
+
+</html>

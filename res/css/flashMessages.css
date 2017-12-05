@@ -1,0 +1,44 @@
+.flasMessageWrapper{
+    display: inline-block;
+    margin: 10px;
+    padding: 0px 10px;
+    padding-left: 30px;
+    border-radius: 2px;
+    width:50%;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.flasMessageWrapper.success{
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.flasMessageWrapper.info{
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+.flasMessageWrapper.error{
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.flashMessage{
+    margin: 18px 0px;
+}
+.flashMessage:before {
+    font-family: "FontAwesome";
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+    padding-right: 10px;
+    position: relative;
+}
+.success .flashMessage:before{
+    content: "\f118";
+}
+.info .flashMessage:before{
+    content: "\f128";
+}
+.error .flashMessage:before{
+    content: "\f119";
+}

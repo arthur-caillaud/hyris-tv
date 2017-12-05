@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <%- include('generalBlock/head', {head: html.head}); %>
+<body>
+    <%- include('generalBlock/header', {header: html.header}); %>
+
+    <div class="mainContentWrapper col-md-12 col-xs-12">
+        <div class="subContentWrapper">
+
+            <div class="bodyTitle">
+                <h2>
+                    Bienvenue sur hyris.tv
+                </h2>
+                <span class="subtitle">
+                    Les vidéos à la une
+                </span>
+            </div>
+
+            <%- include('videoBlock/accueilVideo', {video_main: video.video_main, videos_moment : video.videos_moment}); %>
+
+            <%- include('videoBlock/sliderVideo', {slider: video.slider}); %>
+
+        </div>
+
+    </div>
+
+    <%- include('generalBlock/footer', {footer: html.footer}); %>
+</body>
+</html>

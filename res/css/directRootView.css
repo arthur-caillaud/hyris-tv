@@ -1,0 +1,149 @@
+.directRow {
+    margin-top: 25px;
+    display: inline-block;
+    width: 100%;
+}
+
+.directDiv {
+    position: relative;
+    height: 301px;
+	background-color: #f8f8f8;
+	font-family: Muli;
+	transition: 0.5s;
+}
+
+.directDiv:hover {
+	transition: 0.3s;
+	box-shadow: 0px 0px 10px #cecece;
+    cursor: pointer;
+}
+
+.directDiv span{
+	display: block;
+    text-align: left;
+}
+
+
+.directMiniature {
+	position: absolute;
+    width: 30%;
+    height: 301px;
+    background-color: #c1c1c1;
+    background-size: cover;
+    border-right: 1px solid #c1c1c1;
+    left: 0;
+    top: 0px;
+}
+
+.directMiniature img{
+    display: none;
+    height: 300px;
+    width: auto;
+    max-width: 100%;
+    margin-top: 0%;
+}
+
+.directDescription {
+    position: absolute;
+    width: 70%;
+    left: 30%;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.directDescription span {
+    padding-left: 50px;
+    padding-right: 20px;
+}
+
+.directDescriptionTitre {
+	font-weight: bold;
+	font-size: 28px;
+    padding-top: 10px;
+}
+
+.directDescriptionDate {
+	font-size: 14px;
+    font-style: italic;
+    padding-bottom: 10px;
+}
+
+.directDescriptionDescription {
+	font-size: 18px;
+	margin-top: 20px;
+}
+
+.modifyDirectLink {
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    margin: 20px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.modifyDirectLink:hover {
+    border: 1px solid #e1e1e1;
+}
+
+.fa-cog {
+    margin-right: 3px;
+}
+
+.modifyDirectLink span {
+    color: black;
+    display: inline-block;
+}
+
+/* Loading animations */
+
+.loader-ellips {
+    font-size: 20px; /* change size here */
+    position: relative;
+    width: 4em;
+    height: 1em;
+    margin: 10px auto;
+}
+
+.loader-ellips__dot {
+    display: block;
+    width: 1em;
+    height: 1em;
+    border-radius: 0.5em;
+    background: #555; /* change color here */
+    position: absolute;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+.loader-ellips__dot:nth-child(1),
+.loader-ellips__dot:nth-child(2) {
+    left: 0;
+}
+.loader-ellips__dot:nth-child(3) { left: 1.5em; }
+.loader-ellips__dot:nth-child(4) { left: 3em; }
+
+@keyframes reveal {
+    from { transform: scale(0.001); }
+    to { transform: scale(1); }
+}
+
+@keyframes slide {
+    to { transform: translateX(1.5em) }
+}
+
+.loader-ellips__dot:nth-child(1) {
+    animation-name: reveal;
+}
+
+.loader-ellips__dot:nth-child(2),
+.loader-ellips__dot:nth-child(3) {
+    animation-name: slide;
+}
+
+.loader-ellips__dot:nth-child(4) {
+    animation-name: reveal;
+    animation-direction: reverse;
+}

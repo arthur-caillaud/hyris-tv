@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+
+<%- include('../generalBlock/head', {head: html.head}); %>
+
+<body>
+
+    <%- include('../generalBlock/header', {header: html.header}); %>
+    <%- include('../demandBlock/panel', {demandPanel: html.demandPanel, currentPage: "barco"}); %>
+
+    <div class="mainContentWrapper col-xs-10 col-xs-offset-1">
+        <div class="subContentWrapper">
+            <div class="bodyTitle">
+                <h2>
+                    Demande de prêt de barco
+                </h2>
+                <center>
+                    Cotti (Alex Rolland) 07 60 96 38 22, alex.rolland@student.ecp.fr<br/><br/>
+                    Péless (Simon Brandeis) 06 79 46 06 08, simon.brandeis@student.ecp.fr<br/><br/>
+                    La Baey (Liyang Sun) 06 09 21 48 56, liyang.sun@student.ecp.fr
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../generalBlock/footer', {footer: html.footer}); %>
+
+</body>
+</html>

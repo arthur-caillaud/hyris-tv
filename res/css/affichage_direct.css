@@ -1,0 +1,40 @@
+#enveloppe {
+	border:1px solid black;
+	font-family: Muli;
+	transition: 0.5s;
+}
+
+#enveloppe:hover {
+	background-color: #D3D3D3;
+	transition: 0.5s;
+	box-shadow: 4px 4px 0px #aaa;
+}
+
+#image {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#vignette {
+	height: 250px;
+}
+
+#infos {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#titre {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#date {
+	font-size: 20px;
+}
+
+#description {
+	
+	font-size: 16px;
+	margin-top: 5px;
+}

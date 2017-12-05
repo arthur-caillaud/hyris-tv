@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+
+<%- include('../generalBlock/head', {head: html.head}); %>
+
+<body>
+
+<%- include('../generalBlock/header', {header: html.header}); %>
+
+<%- include('../adminBlock/panel', {adminPanel: html.adminPanel, currentPage: "addDirect"}); %>
+
+<div class="mainContentWrapper col-xs-10 col-xs-offset-1">
+    <div class="subContentWrapper">
+        <div class="bodyTitle">
+            <h2>
+                <%= html.head.title %>
+            </h2>
+        </div>
+        <div class="bodyTitle container">
+            <form action="<%= html.action %>" method="post" enctype="multipart/form-data">
+                <div class="itemModif form-group col-xs-12 col-md-6">
+                    <label for="modifyNom">Nom du direct :</label>
+                    <input type="text" name="nom" class="form-control" required="true" value="<%= html.direct.nom %>">
+                </div>
+                <div class="itemModif form-group col-xs-12 col-md-6">
+                    <label for="modifyDate">Date du direct :</label>
+                    <input id="modifyDate" class="form-control" type="date" required="true" name="date" placeholder="1989-10-18" value="<%= html.direct.newDate%>"/>
+                </div>
+                <div class="itemModif top-align form-group col-xs-12 col-md-6">
+                    <label for="modifyDesc">Description du direct :</label>
+                    <textarea id="modifyDesc" class="form-control" rows="6" name="description" required="true"><%= html.direct.description %></textarea>
+                </div>
+                <div class="itemModif form-group col-xs-12 col-md-6">
+                    <label for="modifyPict"><%= content.html.direct.infoImg %></label>
+                    <input id="modifyPict" class="form-file" type="file" name="imageToUpload" <%= html.imgRequired %>/>
+                    <div class="itemModif form-group col-xs-12">
+                        <%- content.html.direct.imgActuelle %>
+                    </div>
+                </div>
+                <div class="itemModif form-group col-xs-12">
+                    <input type="submit" class="btn btn-primary" id="submitModif" value="Valider">
+                </div>
+            </form>
+        </div>
+        <!--
+        <form class="formAddDirect" action="<%= html.action %>" method="post" enctype="multipart/form-data">
+            Nom du direct<br>
+            <input type="text" name="nom" required="true" value="<%= html.direct.nom %>">
+            <br>
+            Description du direct<br>
+            <input type="text" name="description" required="true" value="<%= html.direct.description %>">
+            <br>
+            Date du direct<br>
+            <input type="date" name="date" value="<%= html.direct.date %>" required="true">
+            <br>
+            <%= content.html.direct.infoImg %>
+            <div class="wrapperInputFile">
+                <input type="file" name="imageToUpload" <%= html.imgRequired %>>
+            </div>
+            <%- content.html.direct.imgActuelle %>
+            <br>
+            <input type="submit" value="Envoyer">
+        </form>
+    -->
+    </div>
+</div>
+
+<%- include('../generalBlock/footer', {footer: html.footer}); %>
+
+</body>
+</html>

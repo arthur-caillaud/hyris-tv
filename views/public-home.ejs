@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('generalBlock/head', {head: html.head}); %>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+
+    <video playsinline autoplay muted loop poster="polina.jpg" id="public-bgvid">
+        <source src="<%= html.image.video_banner %>" type="video/webm">
+        <source src="<%= html.image.video_banner %>" type="video/mp4">
+    </video>
+    
+    <div class="public-banner">
+        <div class="hyris-banner">
+            <img src='<%= html.image.public_banner %>'>
+        </div>
+
+        <div class="main-title typed-title">
+
+        </div>
+
+        <a class="auth-link" style="display:block" href="/auth">
+            <span>Accès étudiant</span>
+        </a>
+
+        <a href="#public-video-container-anchor">
+            <span class="fa fa-caret-down keeponscrolling" aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="public-hyris-description col-md-10 col-md-offset-1">
+
+    </div>
+
+    <div id="public-video-container-anchor" class="public-video-container col-xs-12">
+
+        <span class="public-title col-xs-12">
+            Nos vidéos publiques
+        </span>
+
+        <div class="">
+
+            <% publicVideos.forEach(function(video) { %>
+
+            <div class="wrappervideo col-md-3 col-xs-6">
+                <div class="video">
+                    <a href="<%=video.link%>">
+                        <img src="<%=video.miniature%>" alt="MomentVid" class="MomentVid">
+                        <div class="middle">
+                            <i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+                        </div>
+                    </a>
+                </div>
+                <div class="descriptionVideoWrapper descriptionMomentWrapper">
+                    <div class="descriptionVideo descriptionMoment">
+                        <a href="<%=video.link%>">
+                            <span class="titre">
+                                <%=video.miniTitle%>
+                            </span>
+                        </a>
+                        <div class="descr">
+                            <span class="date">Ajoutée le <%= video.newDate%></span><span class="nb_vue"> · <b><%=video.nb_vue%></b> vues</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <% }); %>
+
+        </div>
+        
+    </div>
+
+    <script src="<%= html.footer.typed_js %>"></script>
+    <%- include('generalBlock/footer', {footer: html.footer}); %>
+
+</body>
+</html>

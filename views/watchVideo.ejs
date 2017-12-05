@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <%- include('generalBlock/head', {head: html.head}); %>
+<body>
+
+<%- include('generalBlock/header', {header: html.header}); %>
+
+    <div class="videoViewBodyContainer row">
+
+        <div class="col-md-12">
+            <%- include('videoBlock/playerVideo', {logo_small : html.header.logo_small_hyris, video: video.video_to_play}); %>
+
+            <% if(html.isGranted.modifyVideo){
+            %>
+            <a class="modifyVideoByIdLink" href="/admin/modifVideo/<%= video.video_to_play.id %>"><span class="fa fa-cog" aria-hidden="true"></span>Modifier</a>
+            <%
+            }
+            %>
+        </div>
+
+        <div class="sliderContainer col-xs-12 col-md-12">
+            <%- include('videoBlock/sliderVideo', {slider : video.sliderDirect}); %>
+
+            <%- include('videoBlock/sliderVideo', {slider : video.slider}); %>
+
+            <%- include('videoBlock/noSliderVideo', {text:html.data.defaultNoSliderText}); %>
+        </div>
+
+        <%- include('generalBlock/footer', {footer: html.footer}); %>
+
+    </div>
+
+</body>

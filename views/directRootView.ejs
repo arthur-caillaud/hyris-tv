@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:background-image="http://www.w3.org/1999/xhtml">
+<%- include('generalBlock/head', {head: html.head}); %>
+<body>
+<%- include('generalBlock/header', {header: html.header}); %>
+
+
+    <div class="mainContentWrapper col-xs-12 col-md-10 col-md-offset-1">
+        <div class="subContentWrapper">
+            <div class="bodyTitle">
+                <h2>Tous nos Directs</h2>
+            </div>
+
+            <div class="ajaxDirectContainer">
+            <%
+                directDiv.forEach(function (div) {
+            %>
+                <div class="directRow relativeBlock">
+                    <div class="directDiv col-xs-10 col-xs-offset-1">
+                        <div class="directMiniature" style='background-image:url(<%= div.imgurl %>)'>
+                        </div>
+                        <div class="directDescription">
+                            <span class="directDescriptionTitre">
+                                <%= div.nom %>
+                            </span>
+                            <span class="directDescriptionDate">
+                                <%= div.date %>
+                            </span>
+                            <span class="directDescriptionDescription">
+                                <%= div.description %>
+                            </span>
+                        </div>
+                        <a href="<%= div.url %>" class="absoluteFill"></a>
+                        <% if(html.isGranted.modifyDirect){
+                        %>
+                        <a class="modifyDirectLink" href="/admin/modifDirect/<%= div.id %>"><span class="fa fa-cog" aria-hidden="true"></span><span class="modifyDirectLinkText">Modifier</span></a>
+                        <%
+                        }
+                        %>
+                    </div>
+                </div>
+            <%
+                })
+            %>
+            </div>
+
+            <!-- status elements -->
+            <div class="scroller-status">
+                <div class="infinite-scroll-request loader-ellips">
+                    <img class="loading-gif" src="<%= html.image.loadingGif%>">
+                </div>
+                <p class="infinite-scroll-last">End of content</p>
+                <p class="infinite-scroll-error">No more pages to load</p>
+            </div>
+
+        </div>
+    </div>
+
+
+<%- include('generalBlock/footer', {footer: html.footer}); %>
+
+</body>
+</html>

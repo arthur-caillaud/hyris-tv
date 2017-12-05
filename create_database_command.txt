@@ -1,0 +1,4 @@
+1 - install mariaDB 
+	apt-get install mariadb-server
+2 - run commands : source nomfichier.sql
+	(ajouter CREATE DATABASE siteNX au début )

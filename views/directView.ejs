@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <%- include('generalBlock/head', {head: html.head}); %>
+<body>
+    <%- include('generalBlock/header', {header: html.header}); %>
+
+    <div class="directPage relativeBlock col-xs-12 col-md-10 col-md-offset-1">
+        <div class="subContentWrapper">
+            <div class="directByIdPresentationDiv">
+                <div class="directByIdMiniature">
+                    <a href="<%= direct.imgurl %>">
+                        <img class="directByIdMiniatureImg" alt="<%= direct.imgurl %>" src="<%= direct.imgurl %>">
+                    </a>
+                </div>
+                <div class="directByIdDescription">
+                    <span class="directByIdDescriptionTitre">
+                        <%= direct.nom %>
+                    </span>
+                    <span class="directByIdDescriptionDate">
+                        <%= direct.date %>
+                    </span>
+                    <span class="directByIdDescriptionDescription">
+                        <%= direct.description %>
+                    </span>
+                    <%
+                    nbVuesTotal = 0
+                    directVideos.forEach(function (div){
+                        nbVuesTotal += div.nb_vue
+                    })%>
+                </div>
+                <span class="directByIdDescriptionNbVues">
+                        <b><%= nbVuesTotal %></b> vues cumulées
+                </span>
+                <% if(html.isGranted.modifyDirect){
+                %>
+                    <a class="modifyDirectByIdLink" href="/admin/modifDirect/<%= direct.id_direct %>"><span class="fa fa-cog" aria-hidden="true"></span><span class="modifyDirectLinkText">Modifier</span></a>
+                <%
+                }
+                %>
+            </div>
+            <div class="directByIdVideos row col-xs-12">
+
+                <% directVideos.forEach(function(video) { %>
+
+                <div class="wrappervideo col-md-3 col-xs-6">
+                    <div class="video">
+                        <a href="<%=video.link%>">
+                            <img src="<%=video.miniature%>" alt="MomentVid" class="MomentVid">
+                            <div class="middle">
+                                <i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="descriptionVideoWrapper descriptionMomentWrapper">
+                        <div class="descriptionVideo descriptionMoment">
+                            <a href="<%=video.link%>">
+                        <span class="titre">
+                            <%=video.miniTitle%>
+                        </span>
+                            </a>
+                            <div class="descr">
+                                <span class="date">Ajoutée le <%= video.newDate%></span><span class="nb_vue"> · <b><%=video.nb_vue%></b> vues</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <% }); %>
+
+
+            </div>
+        </div>
+    </div>
+
+    <%- include('generalBlock/footer', {footer: html.footer}); %>
+
+</body>
+</html>

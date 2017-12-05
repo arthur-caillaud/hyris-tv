@@ -1,0 +1,31 @@
+<%#
+need : {
+
+  panelSection[]{
+	titre : str
+	lien : str
+	}
+}
+%>
+
+<div>
+    <nav class="panelBar" >
+        <%
+        demandPanel.forEach( function(section){
+        if (section.lien == "/demand/" + currentPage){
+        %>
+        <a class="panelElement currentPage" href="<%= section.lien %>">
+            <span><%= section.titre %></span>
+        </a>
+        <%
+        }
+        else {%>
+        <a class="panelElement hvr-underline-reveal" href="<%= section.lien %>">
+            <span><%= section.titre %></span>
+        </a>
+        <%
+        }
+        %>
+        <% }); %>
+    </nav>
+</div>

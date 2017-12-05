@@ -1,0 +1,205 @@
+
+
+<!DOCTYPE html>
+<html>
+    <%- include('../generalBlock/head', {head: html.head}); %>
+		<!--<link rel="stylesheet" href="/css/dropzone.css">
+		<script type="text/javascript" src="/js/dropzone.js"></script>
+		<meta name="csrf-token" content="XYZ123">-->
+<body>
+
+    <%- include('../generalBlock/header', {header: html.header}); %>
+    <%- include('../adminBlock/panel', {adminPanel: html.adminPanel, currentPage : "uploadVideo"}); %>
+
+    <div class="mainContentWrapper col-xs-10 col-xs-offset-1">
+        <div class="subContentWrapper">
+            <div class="bodyTitle">
+                <h2>
+                    Ajouter une vidéo
+                </h2>
+            </div>
+
+            <div id="uploadArea">
+                <form id="upload-widget" method="post" action="/admin/addVideoAlone" class="dropzone">
+                    <div class="fallback">
+                        <input name="file" type="file" />
+                    </div>
+                </form>
+            </div>
+
+            <div id="waitingVideosArea">
+                <div id="waitingVideosAreaTitle">
+                    <span id="waitingVideosAreaTitleText">
+                        <h3>Vidéos en attente</h3>
+                        <br/>
+                    </span>
+
+                    <div id="waitingVideosAreaTitleSubbar">
+
+                    </div>
+                </div>
+                <form id="formUpload" >
+                    <div class="form-group col-xs-6 col-md-4">
+                        <label for="titreVideoUpload">Titre</label>
+                        <input type="text" name="titre" class="form-control" id="titreVideoUpload" required="true"/>
+                    </div>
+                    <div class="form-group col-xs-6 col-md-4">
+                        <label for="dateVideoUpload">Date de la vidéo</label>
+                        <input type="date" name="date_video" class="form-control" value="<%=html.data.date%>"id="dateVideoUpload" />
+                    </div>
+                    <div class="form-group col-xs-6 col-md-4">
+                        <label for="description">Description</label>
+                        <textarea name="description" class="form-control" id="description" placeholder="Description"></textarea>
+                    </div>
+                    <div class="form-group col-xs-6 col-md-4">
+                        <label for="encodage_associe">Encodage associé <i class="fa fa-question-circle" title="Maintenir Ctrl pour sélectionner plusieurs encodages"></i></label>
+                        <select multiple id="encodage_associe" class="form-control" name="encodage[]" class="selectEncodage">
+                          <% listEncodage.forEach(function(encodage) { %>
+                              <option value="<%=encodage.id%>" title="<%=encodage.description%>" <%=encodage.selected%>><%=encodage.label%></option>
+                          <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-6 col-md-4">
+                        <label for="directAssocieVideoUpload">Direct associé <i class="fa fa-question-circle" title="Chercher un direct et récupérer l'id du direct dans l'url : http://hyris.tv/direct/(idDirect)"></i></label>
+                        <select name="direct_associe" id="directAssocieVideoUpload" class="form-control">
+                            <% listDirect.forEach(function(direct) { %>
+                                <option value="<%=direct.id%>" title="<%=direct.description%>"><%=direct.nom%></option>
+                            <% }) %>
+                        </select>
+                        <input type="number" class="form-control" placeholder="id du direct" id="directAssocieVideoUploadNumeric"><br/>
+                    </div>
+                    <div class="form-group col-xs-6 col-md-4">
+                        <label for="tag">Tags </label><br>
+                        <input type="text" name="tag" id="tagVideo"/>
+                        <span id="warningTag" style="display:none;">Attention ce tag n'existe pas.</span>
+                    </div>
+
+                    <div class="form-group col-xs-12"></div>
+
+                    <div class="form-group col-xs-6 col-md-4">
+                        <label for="publicStateVideoUpload">Rendre la video public</label><br>
+                        <input type="checkbox" name="public" id="publicStateVideoUpload" />
+                    </div>
+                    <div class="form-group col-xs-6 col-md-4">
+                        <label for="timeMiniatureUpload">Temps miniature (s) :</label>
+                        <input type="number" class="form-control" size="5" name="timeMiniature" id="timeMiniatureUpload" value="10"><br/>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <input type="button" class="btn btn-primary" value="Submit !" id="buttonVideoUpload"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../generalBlock/footer', {footer: html.footer}); %>
+
+    <script type="text/javascript">
+        // drag and drop js front
+        var availableTags =  <%- JSON.stringify(tags) %>
+        $(document).ready(function() {
+            $("#tagVideo").tagit({
+                availableTags:availableTags,
+                autocomplete: {delay: 0, minLength: 1},
+                caseSensitive: false,
+                singleField: true,
+                singleFieldDelimiter: ",",
+                beforeTagAdded: function(event, ui) {
+                    // do something special
+                    var tags = $("#tagVideo").tagit("assignedTags");
+                    if($.inArray(ui.tagLabel , availableTags)==-1){
+                        $('#warningTag').show(200);
+                        setTimeout(function(){
+                            $('#warningTag').hide(200);
+                        },1000);
+                        return false;
+                    }
+                }
+            });
+        });
+
+        function getSelectValues(select) {
+          var result = [];
+          var options = select && select.options;
+          var opt;
+
+          for (var i=0, iLen=options.length; i<iLen; i++) {
+            opt = options[i];
+
+            if (opt.selected) {
+              result.push(opt.value || opt.text);
+            }
+          }
+          return result;
+        }
+
+        var token = "";
+        var data = { token : token, filename : ''};
+        Dropzone.options.uploadWidget = {
+            paramName: 'file',
+            maxFilesize: 100000, // MB
+            maxFiles: 1,
+            dictDefaultMessage: 'Drag a video here to upload, or click to select one',
+            headers: {
+              'x-csrf-token': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
+            },
+            //acceptedFiles: 'image/*',
+            init: function() {
+                this.on('success', function( file, resp ){
+                  token = "passed";
+                  data = { token : token, filename : resp.filename, mimetype : resp.mimetype};
+                });
+                this.on('thumbnail', function(file) {
+
+                })
+            },
+            accept: function(file, done) {
+              done();
+            }
+        };
+
+        // request js front
+        // TODO implement token
+        var buttonUpload = document.getElementById('buttonVideoUpload');
+        var inputTitre = document.getElementById('titreVideoUpload');
+        var inputPublic = document.getElementById('publicStateVideoUpload');
+        var inputDate = document.getElementById('dateVideoUpload');
+        var directAssocie = document.getElementById('directAssocieVideoUpload');
+        var directAssocieNumber = document.getElementById('directAssocieVideoUploadNumeric');
+        var inputTag = document.getElementById('tagVideo');
+        var inputDescription = document.getElementById('description');
+        var timeMiniature = document.getElementById('timeMiniatureUpload');
+        if(!directAssocieNumber){
+            directAssocie = directAssocieNumber;
+        }
+        buttonUpload.addEventListener('click',  function(){
+            // TODO check that all needed data are given
+
+            // send POST request with data associated to the video
+            var xhr = new XMLHttpRequest();
+            //alert(JSON.stringify(data));
+            if(xhr){
+                xhr.open('POST', '/admin/addVideo' );
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onload = function () {
+                    // do something to response
+                    if(xhr.status == 200){
+                        alert(this.responseText);
+                    }else{
+                        alert(this.responseText);
+                    }
+                    document.location.href="/admin/uploadVideo";
+                };
+                var query = 'titre=' + inputTitre.value + '&public=' + inputPublic.checked +
+                  '&mimetype=' + data.mimetype + '&filename=' + data.filename + '&token=' +
+                  data.token + '&date=' +inputDate.value +'&tag=' + inputTag.value +'&direct=' +
+                  directAssocie.value + '&description='+ inputDescription.value +
+                  '&associatedEncode=' + getSelectValues(document.getElementById("encodage_associe")).join('_')+
+                  '&timeMiniature=' + timeMiniature.value;
+                //alert(query);
+                xhr.send(query);
+            }
+        });
+    </script>
+</body>
+</html>

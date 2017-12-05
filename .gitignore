@@ -1,0 +1,9 @@
+node_modules
+res/vid
+my_const.js
+node_module
+workflow
+.*
+!.gitignore
+uploads
+npm-debug.log

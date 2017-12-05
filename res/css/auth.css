@@ -1,0 +1,160 @@
+.wrapperAuth{
+    width: calc(100% + 30px);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    left:-15px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.loginPicture {
+    font-size: 1.4em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+}
+
+.loginWrapper{
+    padding-bottom: 100px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.imgBgAuth{
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index: 1;
+    width: 100%
+}
+
+.loginBox {
+    border: solid 1px #d8d8d8;
+    background-color: #fafafa;
+    margin-top: 50px;
+    padding-bottom: 20px;
+    height: 100%;
+    box-shadow: #949494 0px 0px 10px;
+}
+
+.loginBoxInput{
+    margin : auto;
+    margin-top: 15px;
+    height: auto;
+    width: 80%;
+}
+
+.usernameInputBox{
+    margin-top: 45px;
+}
+
+.loginBoxInput:focus .loginInputPicture{
+    background-color: #7c7c7c;
+    color: #FFFFFF;
+}
+
+.loginBoxInputZone {
+    background-color: white;
+    vertical-align: middle;
+    padding-left: 5%;
+    border-style: solid;
+    border-color: #7f7f7f;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 0px 4px 4px 0px;
+    width: 75%;
+    cursor: pointer;
+    position: relative;
+    right: 3%;
+}
+
+.loginInputPicture {
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-block;
+    padding-top: 3px;
+    font-size: 1.2em;
+    text-align: center;
+    width: 18%;
+    border-style: solid;
+    border-color: #7f7f7f;
+    border-width: 1px 0px 1px 1px;
+}
+
+.loginBoxInputZone:hover {
+    background-color: #f3f3f3;
+    border-style: inset;
+}
+
+.loginBoxInputZone:focus {
+    border-style: inset;
+    box-shadow: inset 3px 3px 10px #e0e0e0;
+}
+
+.loginBoxLabel {
+    font-weight: bold;
+    font-size: 1.4em;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 5px;
+
+}
+
+.loginBoxLabelInfo {
+    color: #888;
+    font-size: 1em;
+}
+
+.loginBoxLine {
+    display: inline-block;
+    width: 80%;
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.loginButton{
+    display: block;
+}
+
+.loginButton button:active{
+    border: none;
+}
+
+.hyrisLoginButton {
+    margin-top: 20px;
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid #d9d9d9;
+    color: black;
+    background-color: transparent;
+    box-shadow: #e3e3e3 2px 2px 10px;
+}
+
+.hyrisLoginButton i{
+    font-size: 1.2em;
+}
+
+.hyrisLoginButton:hover {
+    color: #FFFFFF;
+    border: 1px solid #0067a7;
+    background-color: #0067a7;
+}
+
+.loginButtonPicture {
+    font-size: 1.8em;
+}
+
+.myEcpButton {
+    margin-top: 25px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.3em;
+    background-color: #0067a7;
+    border: none;
+    padding: 1em;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    box-shadow: #e3e3e3 2px 2px 10px;
+}

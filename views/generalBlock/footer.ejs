@@ -1,0 +1,12 @@
+<!-- début de footer.ejs -->
+<footer class="row col-xs-12">
+<div id="copyright"><%= footer.copyright %></div>
+<div id="links"><% footer.links.forEach(function(link){ %>
+    <a href="<%= link.link %>"><%= link.title %></a><% }); %>
+</div>
+<% footer.internal_js.forEach(function(src){%>
+    <script src="<%= src.src%>"></script>
+<%})%>
+</footer>
+</div> <!-- end of .wrapperBanner -->
+<!-- fin de footer.ejs -->

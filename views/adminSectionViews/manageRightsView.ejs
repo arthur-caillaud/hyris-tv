@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+    <%- include('../generalBlock/head', {head: html.head}); %>
+
+<body>
+
+    <%- include('../generalBlock/header', {header: html.header}); %>
+    <%- include('../adminBlock/panel', {adminPanel: html.adminPanel, currentPage : "manageRights"}); %>
+
+    <div class="mainContentWrapper col-xs-10 col-xs-offset-1">
+
+        <h2>
+            Gérer les rôles
+        </h2>
+
+        <div class="container">
+
+            <div class="row">
+
+                <div id="rôles" class="col-xs-6">
+
+                     <ul id="menu-accordeon">
+
+                         <% for(var i = 0; i<roles.length; i++) {%>
+
+                            <li><%= roles[i].label%>
+
+                                <ul>
+
+                                    <li><a href="/admin/manageRights?role=<%= roles[i].label%>&page=members">Liste des membres concernés</a></li>
+                                    <li><a href="/admin/manageRights?role=<%= roles[i].label%>&page=rights">Modifier le rôle</a></li>
+                                    <li><a href="">Supprimer le rôle</a></li>
+
+                                </ul>
+
+                            </li>
+                         <% }%>
+
+                     </ul>
+
+                </div>
+
+                <div id="details" class="col-xs-6">
+
+
+                    <%- rightContent %>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('../generalBlock/footer', {footer: html.footer}); %>
+
+</body>
+</html>

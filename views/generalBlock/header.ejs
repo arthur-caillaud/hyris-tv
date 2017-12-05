@@ -1,0 +1,35 @@
+<!-- debut header.ejs -->
+<% header.external_js.forEach(function(src){%>
+<script src="<%= src.src%>"></script>
+<%})%>
+
+<div class="pageWrapper">
+<header>
+    <div class="wrapperBanner">
+        <a class="bannerLink" href="/"></a>
+        <div class="banner">
+            <div class="logo">
+              <span class="hy_part"><img src="<%= header.logo_hy %>"></span>
+              <span class="ris_part"><img src="<%= header.logo_ris %>"></span>
+          </div>
+        </div>
+    </div>
+</header>
+
+<%- include('../toolkitBlock/searchBar', {header : header}) %>
+
+<%- include('../toolkitBlock/lateralMenu', {lateralMenu : header.lateralMenu}) %>
+
+<% header.messages.success.forEach(function(message){ %>
+        <div class="success flasMessageWrapper"><p class="flashMessage"><%= message %></p></div><br/>
+<% }) %>
+<% header.messages.fail.forEach(function(message){ %>
+        <div class="error flasMessageWrapper"><p class="flashMessage"><%= message %></p></div><br/>
+<% }) %>
+<% header.messages.error.forEach(function(message){ %>
+        <div class="error flasMessageWrapper"><p class="flashMessage"><%= message %></p></div><br/>
+<% }) %>
+<% header.messages.info.forEach(function(message){ %>
+        <div class="info flasMessageWrapper"><p class="flashMessage"><%= message %></p></div><br/>
+<% }) %>
+<!-- fin header.ejs -->

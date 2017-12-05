@@ -1,0 +1,13 @@
+<!-- début de head.ejs -->
+<head>
+    <title><%= head.title %></title>
+    <link rel="icon" type="image/png" href=<%= head.favicon%>>
+    <% head.css_required.forEach(function(url){ %>
+        <link rel="stylesheet" type="text/css" href="<%= url.url %>">
+    <% }) %>
+    <% head.meta.forEach(function(metaObj){ %>
+        <meta name="<%= metaObj.name %>" content="<%= metaObj.content %>">
+    <% }) %>
+
+</head>
+<!-- fin de head.ejs -->

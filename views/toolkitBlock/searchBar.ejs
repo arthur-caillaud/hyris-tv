@@ -1,0 +1,17 @@
+<!-- start of searchbar.ejs -->
+<div id="searchBarWrapper" >
+    <button class="lateralMenuButton" id="lateralMenuButton" onclick="moveLateralMenu()"><i id="lateralMenuButtonIco" class="fa fa-bars" aria-hidden="true"></i></button>
+    <div id="searchBar">
+        <form action="/search" class="formulaire" id="searchForm" method="post" autocomplete="off">
+                <div class="searchInputContainer">
+                    <input id="search" name="search[q]" type="text" placeholder="Rechercher une vidéo, un direct, un #tag..." />
+                    <div id="ajaxResultsContainer" class="emptyContainer"></div>
+                </div>
+                <button type="submit" id="searchButton">
+                    <i class="fa fa-search loupe_button" aria-hidden="true"></i>
+                </button>
+        </form>
+    </div>
+    <button class="logoutButton" id="logoutButton" onclick="logoutUser()"><i id="logoutButtonIco" class="fa fa-sign-out" aria-hidden="true"></i></button>
+</div>
+<!-- end of searchbar.ejs -->

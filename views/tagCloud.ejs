@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <%- include('generalBlock/head', {head: html.head}); %>
+    <body>
+        <%- include('generalBlock/header', {header: html.header}); %>
+
+        <div class="mainContentWrapper relativeBlock col-xs-12">
+            <div class="subContentWrapper">
+                <div id="tagCloud">
+                </div>
+                <script src="/js/jqcloud.min.js"></script>
+                <script>
+                    <%
+                        getWeight = function (nb_video) {
+                            if (nb_video < 6){
+                                return 1
+                            }
+                            if (nb_video >= 6 && nb_video < 10){
+                                return 2
+                            }
+                            if (nb_video >= 10 && nb_video < 30){
+                                return 3
+                            }
+                            if (nb_video >= 30 && nb_video < 50){
+                                return 4
+                            }
+                            if (nb_video >= 50 && nb_video < 60){
+                                return 5
+                            }
+                            else {
+                                return 5
+                            }
+                        }
+                        cloudWord = []
+                        jqcloud.tagData.forEach(function(tag){
+                            cloudWord.push({
+                                text : tag.tag,
+                                weight : getWeight(tag.nb_video),
+                                link : "/tag/"+tag.tag
+                            })
+                        })
+                    %>
+                    $(document).ready(function($) {
+                        var words = <%- JSON.stringify(cloudWord) %>;
+                        console.log("BEEN HERE")
+                        $("#tagCloud").jQCloud(words,{
+                            autoResize: true
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+
+        <%- include('generalBlock/footer', {footer: html.footer}); %>
+    </body>
+</html>

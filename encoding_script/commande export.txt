@@ -1,0 +1,1 @@
+SELECT Encode.id as id_encodage, Video.id as id_video, 0 as is_encode, NULL as id FROM `Video`,Encode WHERE NOT Encode.label LIKE "1080p" ORDER BY `id_video` DESC
